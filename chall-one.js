@@ -5,39 +5,62 @@
 // summary consists of the reduced arguments.
 // filter() is used on summary to keep only the unique values and unique is returned.
 
-function sym() {
-    // Convert the argument object into a proper array
-    let args = [];
+// function sym() {
+//     // Convert the argument object into a proper array
+//     let args = [];
 
-    for (let i = 0; i < arguments.length; i++) {
-        args.push(arguments[i]);
-    };
+//     for (let i = 0; i < arguments.length; i++) {
+//         args.push(arguments[i]);
+//     };
 
-    // Return the symmetric difference of 2 arrays
-    let getDiff = function (arr1, arr2) {
-        // Returns items in arr1 that don't exist in arr2
-        function filterFunction(arr1, arr2) {
+//     // Return the symmetric difference of 2 arrays
+//     let getDiff = function (arr1, arr2) {
+//         // Returns items in arr1 that don't exist in arr2
+//         function filterFunction(arr1, arr2) {
 
-            // return arr1.filter(function (item) {
-            //     return arr2.indexOf(item) === -1;
-            // });
-            return arr1.filter(item => arr2.indexOf(item) === -1);
+//             // return arr1.filter(function (item) {
+//             //     return arr2.indexOf(item) === -1;
+//             // });
+//             return arr1.filter(item => arr2.indexOf(item) === -1);
+//         }
+
+//         // Run filter function on each array against the other
+//         return filterFunction(arr1, arr2).concat(filterFunction(arr2, arr1));
+//     };
+
+//     // Reduce all arguments getting the difference of them
+//     let summary = args.reduce(getDiff, []);
+
+//     // Run filter function to get the unique values
+//     let unique = summary.filter(function (elem, index, self) {
+//         return index === self.indexOf(elem);
+//     });
+//     return unique;
+// }
+
+// // test here
+// console.log(sym([1, 2, 3], [5, 2, 1, 4]));
+
+// Explanation https://www.youtube.com/watch?v=XG3O5xJgMA0&t=172s
+// Minute: 7:00
+
+// create a function to find the symmetric difference between two arrays
+
+const symOfTwo = (arr1, arr2) => {
+    // start creating the empty output
+    const output = [];
+    for (const el of arr1) {
+        if (!arr1.includes(el) && (!arr2.includes(el))) {
+            output.push(el);
         }
+    }
+};
 
-        // Run filter function on each array against the other
-        return filterFunction(arr1, arr2).concat(filterFunction(arr2, arr1));
-    };
+function sym() {
+    // transform arguments into an array
+    const arrOfArgs = [...arguments];
+    console.log(arrOfArgs);
+};
 
-    // Reduce all arguments getting the difference of them
-    let summary = args.reduce(getDiff, []);
-
-    // Run filter function to get the unique values
-    let unique = summary.filter(function (elem, index, self) {
-        return index === self.indexOf(elem);
-    });
-    return unique;
-}
-
-// test here
 console.log(sym([1, 2, 3], [5, 2, 1, 4]));
-I
+
