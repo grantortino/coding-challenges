@@ -1,5 +1,4 @@
 // Code Explanation
-// The slice() method is used to break down the arguments object to an array, args.
 // The getDiff function finds the symmetric difference between two sets, arr1 and arr2. It is used as a callback function for the reduce() method called on args.
 // The first filterFunction() returns elements in arr1 that don’t exist in arr2.
 // The next filterFunction() is run on each array against the other to check the inverse of the first check for uniqueness and concatenate it.
