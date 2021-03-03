@@ -48,7 +48,7 @@
 
 const symOfTwo = (arr1, arr2) => {
     // start creating the empty output
-    // const output = [];
+    const output = [];
     // // loop through first array
     // for (const el of arr1) {
     //     // check for duplicates
@@ -88,10 +88,17 @@ const symOfTwo = (arr1, arr2) => {
 
     console.log('count of how many times a value appears in the combined array', elObj);
 
-    // return output;
+    // the elements we are interested in are the ones in which the key appears only once, so we look through our keys in elObj
+
+    for (const el in elObj) {
+        if (elObj[el] === 1) {
+            output.push(el);
+        }
+    }
+    return output;
     };
 
-    symOfTwo([1, 2, 3, 3], [5, 2, 1, 4]);
+    // symOfTwo([1, 2, 3, 3], [5, 2, 1, 4]);
 
     // this will give us the symmetric difference of any number of arrays
 function sym() {
@@ -104,11 +111,11 @@ function sym() {
         // start fom the first index of arrOfArgs and then update output variable with calling the symOfTwo function
         output = symOfTwo(output, arrOfArgs[i]); // this will constantly update our output with the updated symmetric difference
     }
-    return output.sort((a, b) => a - b);
+    return output;
 };
 
 // console.log(symOfTwo([1, 2, 3], [5, 2, 1, 4])); 
 
-// console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
+console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
 
 
