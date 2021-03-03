@@ -49,18 +49,38 @@
 const symOfTwo = (arr1, arr2) => {
     // start creating the empty output
     const output = [];
+    // loop through first array
     for (const el of arr1) {
-        if (!arr1.includes(el) && (!arr2.includes(el))) {
+        // check for duplicates
+        if (!output.includes(el) && (!arr2.includes(el))) {
             output.push(el);
         }
     }
+    // loop through second array
+    for (const el of arr2) {
+        // check for duplicates
+        if (!output.includes(el) && (!arr1.includes(el))) {
+            output.push(el);
+        }
+    }
+    return output;
 };
 
+// this will give us the symmetric difference of any number of arrays
 function sym() {
     // transform arguments into an array
     const arrOfArgs = [...arguments];
-    console.log(arrOfArgs);
+    // extract the elements in the array
+    let output = arrOfArgs[0];
+    // with a for loop, I set i = 1 because we already took care of the first array
+    for (let i = 1; i < arrOfArgs.length; i++) {
+        // start fom the first index of arrOfArgs and then update output variable with calling the symOfTwo function
+        output = symOfTwo(output, arrOfArgs[i]); // this will constantly update our output with the updated symmetric difference
+    }
+    return output.sort((a, b) => a - b);
 };
+
+// console.log(symOfTwo([1, 2, 3], [5, 2, 1, 4])); 
 
 console.log(sym([1, 2, 3], [5, 2, 1, 4]));
 
