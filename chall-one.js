@@ -48,25 +48,52 @@
 
 const symOfTwo = (arr1, arr2) => {
     // start creating the empty output
-    const output = [];
-    // loop through first array
-    for (const el of arr1) {
-        // check for duplicates
-        if (!output.includes(el) && (!arr2.includes(el))) {
-            output.push(el);
-        }
-    }
-    // loop through second array
-    for (const el of arr2) {
-        // check for duplicates
-        if (!output.includes(el) && (!arr1.includes(el))) {
-            output.push(el);
-        }
-    }
-    return output;
-};
+    // const output = [];
+    // // loop through first array
+    // for (const el of arr1) {
+    //     // check for duplicates
+    //     if (!output.includes(el) && (!arr2.includes(el))) {
+    //         output.push(el);
+    //     }
+    // }
+    // // loop through second array
+    // for (const el of arr2) {
+    //     // check for duplicates
+    //     if (!output.includes(el) && (!arr1.includes(el))) {
+    //         output.push(el);
+    //     }
+    // }
 
-// this will give us the symmetric difference of any number of arrays
+    
+    // OPTIMIZATION
+
+    // first go into each of the arrays and eliminate the duplicates withing themselves. i.e. if the first array has [1, 2, 3, 3], I make it to have [1, 2, 3]
+    // after I did this I am going to combine the two arrays into one array and then count each element, how many times each element occurs and avoid a loop withing a loop situation.fsdfsdfsdfsdfsdf
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+    console.log('set1', set1, 'and set2', set2); // these are objects and we want an array
+    // i am going to combine the two arrays into one array. I am going to spread the values of both arrays into one array
+    const combinedArray = [...set1, ...set2];
+    console.log('my combined array', combinedArray);
+    // i am going to make an object that keeps count of how many times each element appears in this combined array
+    const elObj = {};
+
+    for (const el of combinedArray) {
+        if (el in elObj) {
+            elObj[el]++;
+        } else {
+            elObj[el] = 1;
+        }
+    };
+
+    console.log('count of how many times a value appears in the combined array', elObj);
+
+    // return output;
+    };
+
+    symOfTwo([1, 2, 3, 3], [5, 2, 1, 4]);
+
+    // this will give us the symmetric difference of any number of arrays
 function sym() {
     // transform arguments into an array
     const arrOfArgs = [...arguments];
@@ -82,5 +109,6 @@ function sym() {
 
 // console.log(symOfTwo([1, 2, 3], [5, 2, 1, 4])); 
 
-console.log(sym([1, 2, 3], [5, 2, 1, 4]));
+// console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
+
 
