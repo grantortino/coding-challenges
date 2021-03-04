@@ -68,7 +68,7 @@ const symOfTwo = (arr1, arr2) => {
     // OPTIMIZATION
 
     // first go into each of the arrays and eliminate the duplicates withing themselves. i.e. if the first array has [1, 2, 3, 3], I make it to have [1, 2, 3]
-    // after I did this I am going to combine the two arrays into one array and then count each element, how many times each element occurs and avoid a loop withing a loop situation.fsdfsdfsdfsdfsdf
+    // after I did this I am going to combine the two arrays into one array and then count each element, how many times each element occurs and avoid a loop withing a loop situation.
     const set1 = new Set(arr1);
     const set2 = new Set(arr2);
     console.log('set1', set1, 'and set2', set2); // these are objects and we want an array
